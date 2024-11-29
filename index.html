@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Socket.IO</title>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body style="background-color: grey">
+    <h1>HWllo world with Socket.IO</h1>
+  </body>
+  <script>
+    const socket = io();
+
+    //receving
+    // socket.on("custom-Event", (data) => {
+    //   console.log(data);
+    // });
+    // //sending
+    // socket.emit("fromClient","Message from the Client SIde")
+
+    // socket.on("allConnectedUsers", (data) => {
+    //   // Clear the existing content safely
+    //   document.body.innerHTML = "";
+
+    //   // Write the new content
+    //   document.body.innerHTML = data;
+    // });
+
+    socket.on("connectedOne", (data) => {
+      document.body.innerHTML = "";
+      console.log(data);
+
+      // Write the new content
+      document.body.innerHTML = data;
+    });
+    // socket.on("exceptSender", (data) => {
+    // Clear the existing content safely
+    //   document.body.innerHTML = "";
+
+    //   // Write the new content
+    //   document.body.innerHTML = data;
+    // });
+
+    //============================================================================
+    //Custom Name Spaces
+    // const socket_1 = io("/groups");
+    // socket_1.on("message", (data) => {
+    //   document.body.innerHTML = "";
+    //   document.body.innerHTML = data;
+    // });
+
+    //==========================================================================
+    //welcome MEssage when JOined in room
+    socket.on("joinTheRoom", (data) => {
+      document.images.innerHTML = "";
+      document.write(data);
+    });
+    socket.on("limitReached", (data) => {
+      alert(data);
+    });
+    
+  </script>
+</html>
